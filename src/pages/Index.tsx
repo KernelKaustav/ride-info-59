@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import AuthModal from '@/components/AuthModal';
 import TransportCard from '@/components/TransportCard';
 import SearchHeader from '@/components/SearchHeader';
+import MapViewComponent from '@/components/MapViewComponent';
 import { authService, type AuthUser } from '@/services/auth';
 import { useNavigate } from 'react-router-dom';
 import { Vehicle } from '@/services/api';
@@ -134,6 +135,26 @@ const Index = () => {
             setSearchTo={setSearchTo}
             onSearch={handleSearch}
           />
+        </div>
+      </section>
+
+      {/* Live Map View */}
+      <section className="py-12">
+        <div className="container mx-auto px-4">
+          <div className="flex items-center justify-between mb-8">
+            <h3 className="text-2xl font-bold text-foreground">Live Map</h3>
+            <Badge variant="secondary" className="text-sm">
+              <MapPin className="h-4 w-4 mr-1" />
+              Real-time Locations
+            </Badge>
+          </div>
+          
+          <div className="mb-8">
+            <MapViewComponent 
+              vehicles={transportOptions}
+              className="w-full h-[500px] rounded-lg border shadow-lg"
+            />
+          </div>
         </div>
       </section>
 
