@@ -11,6 +11,7 @@ import MapViewComponent from '@/components/MapViewComponent';
 import { authService, type AuthUser } from '@/services/auth';
 import { useNavigate } from 'react-router-dom';
 import { Vehicle } from '@/services/api';
+import transportMapBg from '@/assets/transport-map-background.jpg';
 
 // Mock data for transport options
 const transportOptions: Vehicle[] = [
@@ -139,8 +140,12 @@ const Index = () => {
       </section>
 
       {/* Live Map View */}
-      <section className="py-12">
-        <div className="container mx-auto px-4">
+      <section className="py-12 relative">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-20"
+          style={{ backgroundImage: `url(${transportMapBg})` }}
+        />
+        <div className="container mx-auto px-4 relative z-10">
           <div className="flex items-center justify-between mb-8">
             <h3 className="text-2xl font-bold text-foreground">Live Map</h3>
             <Badge variant="secondary" className="text-sm">
@@ -152,7 +157,7 @@ const Index = () => {
           <div className="mb-8">
             <MapViewComponent 
               vehicles={transportOptions}
-              className="w-full h-[500px] rounded-lg border shadow-lg"
+              className="w-full h-[500px] rounded-lg border shadow-lg bg-background/80 backdrop-blur-sm"
             />
           </div>
         </div>
