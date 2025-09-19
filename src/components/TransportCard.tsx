@@ -116,7 +116,7 @@ const TransportCard: React.FC<TransportCardProps> = ({ transport, showRoute = fa
           variant="outline" 
           className="w-full" 
           size="sm"
-          onClick={() => navigate('/search', { 
+          onClick={() => navigate('/route-details', { 
             state: { 
               selectedVehicle: transport,
               showRoute: true 
