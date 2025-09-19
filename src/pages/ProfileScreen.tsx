@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { User, Settings, Bell, MapPin, Clock, LogOut, ArrowLeft } from 'lucide-react';
+import { User, Settings, Bell, MapPin, Clock, LogOut, ArrowLeft, Route, Search } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -18,6 +18,13 @@ const ProfileScreen = () => {
     priceAlerts: false,
     realTimeUpdates: true
   });
+  
+  const [frequentRoutes] = useState([
+    'Central Station → Market Square',
+    'University → IT Park',
+    'Airport → City Center',
+    'Hospital → Railway Station'
+  ]);
   const [loading, setLoading] = useState(true);
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -247,12 +254,44 @@ const ProfileScreen = () => {
           </CardContent>
         </Card>
 
+        {/* Frequently Searched Routes */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center space-x-2">
+              <Route className="h-5 w-5" />
+              <span>Frequent Routes</span>
+            </CardTitle>
+          </CardHeader>
+          <CardContent className="space-y-3">
+            {frequentRoutes.map((route, index) => (
+              <Button 
+                key={index}
+                variant="outline" 
+                className="w-full justify-start text-sm"
+                onClick={() => navigate('/search', { state: { searchQuery: route } })}
+              >
+                <Search className="h-4 w-4 mr-2" />
+                {route}
+              </Button>
+            ))}
+          </CardContent>
+        </Card>
+
         {/* Quick Actions */}
         <Card>
           <CardHeader>
             <CardTitle>Quick Actions</CardTitle>
           </CardHeader>
           <CardContent className="space-y-3">
+            <Button 
+              variant="outline" 
+              className="w-full justify-start"
+              onClick={() => navigate('/notifications')}
+            >
+              <Bell className="h-4 w-4 mr-2" />
+              Notifications
+            </Button>
+            
             <Button variant="outline" className="w-full justify-start">
               <MapPin className="h-4 w-4 mr-2" />
               Saved Locations

@@ -4,6 +4,7 @@ import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Clock, IndianRupee, MapPin, Navigation, Bus, Car, Truck } from 'lucide-react';
 import { Vehicle } from '@/services/api';
+import { useNavigate } from 'react-router-dom';
 
 interface TransportCardProps {
   transport: Vehicle;
@@ -11,6 +12,7 @@ interface TransportCardProps {
 }
 
 const TransportCard: React.FC<TransportCardProps> = ({ transport, showRoute = false }) => {
+  const navigate = useNavigate();
   const getTransportIcon = () => {
     switch (transport.type) {
       case 'bus':
@@ -110,7 +112,17 @@ const TransportCard: React.FC<TransportCardProps> = ({ transport, showRoute = fa
         </div>
         
         {/* Action Button */}
-        <Button variant="outline" className="w-full" size="sm">
+        <Button 
+          variant="outline" 
+          className="w-full" 
+          size="sm"
+          onClick={() => navigate('/search', { 
+            state: { 
+              selectedVehicle: transport,
+              showRoute: true 
+            } 
+          })}
+        >
           <Navigation className="h-4 w-4 mr-2" />
           View Route Details
         </Button>
