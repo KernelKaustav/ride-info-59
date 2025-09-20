@@ -24,7 +24,7 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone https://github.com/promit1201/ride-info-59.git
+git clone (https://github.com/KernelKaustav/ride-info-59.git)
 
 # Step 2: Navigate to the project directory.
 cd ride-info-59
