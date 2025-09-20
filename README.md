@@ -24,10 +24,10 @@ Follow these steps:
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone https://github.com/promit1201/ride-info.git
+git clone https://github.com/promit1201/ride-info-59.git
 
 # Step 2: Navigate to the project directory.
-cd ride-info-sahay
+cd ride-info-59
 
 # Step 3: Install the necessary dependencies.
 npm i
